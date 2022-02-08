@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebAPI.Models.Country>
+
+@{
+    ViewBag.Title = "GetAllCountries";
+}
+
+<h2>GetAllCountries</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name.common)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name.official)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subregion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.population)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flags.png)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flags.svg)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name.common)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name.official)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subregion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.population)
+        </td>
+        <th>
+            <a href="@Html.DisplayFor(modelItem => item.flags.png)" target="_blank">@Html.DisplayFor(modelItem => item.name.common) Flag</a>
+        </th>
+        <th>
+            <a href="@Html.DisplayFor(modelItem => item.flags.svg)" target="_blank">@Html.DisplayFor(modelItem => item.name.common) Flag</a>
+        </th>
+        <td>
+            @Html.ActionLink("Details", "CountryDetails", new { countryName = item.name.common })
+        </td>
+    </tr>
+}
+
+</table>
