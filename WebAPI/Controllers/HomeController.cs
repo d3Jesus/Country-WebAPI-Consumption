@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
         {
             //Hosted web API REST Service base url
             string Baseurl = "https://restcountries.com/v3.1/";
-            IList<Country> countries = null;
+            Country country = null;
             using (var client = new HttpClient())
             {
                 //Passing service base url
@@ -70,10 +70,10 @@ namespace WebAPI.Controllers
                     //Storing the response details received from web api
                     var response = Res.Content.ReadAsStringAsync().Result;
                     //Deserializing the response received from web api and storing into the Country list
-                    countries = JsonConvert.DeserializeObject<IList<Country>>(response);
+                    country = JsonConvert.DeserializeObject<Country>(response);
                 }
                 //returning the coutries list to view
-                return View(countries);
+                return View(country);
             }
         }
         #endregion
