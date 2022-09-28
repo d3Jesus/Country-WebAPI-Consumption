@@ -2,7 +2,9 @@
 
 @{
     ViewBag.Title = "CountryDetails";
-    var countries = ViewData["CountriesList"] as List<Country>;
+
+    List<Country> countries = ViewData["CountriesList"] as List<Country>;
+    TempData["CountriesList"] = countries;
 
     // Capitals
     int numCapitals = countries.First().capital.Count;
@@ -52,22 +54,22 @@
         </table>
 
         @*Native name*@
-        <table class="table table-bordered border-primary">
+        <!--<table class="table table-bordered border-primary">
             <thead>
                 <tr>
                     <th colspan="2" class="text-center">Native Names</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var native in countries)
+                foreach (var native in countries)
                 {
                     <tr>
                         <td>Native</td>
-                        <td>@Html.DisplayFor(model => native.name.nativeName)</td>
+                        <td>Html.DisplayFor(model => native.name.nativeName)</td>
                     </tr>
                 }
             </tbody>
-        </table>
+        </table>-->
 
         @*Capital*@
         <table class="table table-bordered border-primary">
@@ -151,50 +153,9 @@
     </div>
 
 
-    <dl class="dl-horizontal">
-
-
-
-
-        @foreach (var c in countries)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => c.region)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => c.region)
-            </dd>
-        }
-
-        @*
-        <dt>
-            @Html.DisplayNameFor(model => model.subregion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.subregion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.area)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.area)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.population)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.population)
-        </dd>*@
-
-    </dl>
+    
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Export to Excel", "ExportToXls") |
     @Html.ActionLink("Back to List", "Index")
 </p>
