@@ -6,10 +6,16 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 ## Table of Contents
 
 - [Overview](#overview)
+	- [Display All Countries](#display-all)
+	- [Display Country Details](#display-details)
 - [Tarefas] (#tarefas)
 - [Autor](#autor)
 
 ## Overview
+### Display All
+![GetAll](https://github.com/Yuran-de-Jesus/Country-WebAPI-Consumption/blob/master/WebAPI/Content/assets/GetAll.PNG)
+
+### Display Details
 
 ## Tarefas
 - [x] Obter e visualizar as informações de propriedades dos países (nome, capital, região, sub-região, população, área, fuso horário, nome nativo e o link para visualizar a bandeira)
