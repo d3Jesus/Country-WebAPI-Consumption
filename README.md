@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # WebApi
 ## Introduction
 Project criado como desafio para uma vaga de emprego. O objectivo era desenvolver um sitema, através da API fornecida, consumir os seus dados.
@@ -8,7 +7,7 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 - [Overview](#overview)
 	- [Display All Countries](#display-all)
 	- [Display Country Details](#display-details)
-- [Tarefas] (#tarefas)
+- [Tarefas](#tarefas)
 - [Autor](#autor)
 
 ## Overview
