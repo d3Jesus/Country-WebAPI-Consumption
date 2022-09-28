@@ -1,7 +1,27 @@
-﻿@model WebAPI.Models.Country
+﻿@using WebAPI.Models
 
 @{
     ViewBag.Title = "CountryDetails";
+    var countries = ViewData["CountriesList"] as List<Country>;
+
+    // Capitals
+    int numCapitals = countries.First().capital.Count;
+
+    List<string> captitals = new List<string>();
+    for(int i = 0; i < numCapitals; i++)
+    {
+        captitals.Add(countries.First().capital[i]);
+    }
+
+    // Timezones
+    int numTimezones = countries.First().timezones.Count;
+
+    List<string> timezones = new List<string>();
+    for (int i = 0; i < numTimezones; i++)
+    {
+        timezones.Add(countries.First().timezones[i]);
+    }
+
 }
 
 <h2>CountryDetails</h2>
@@ -9,15 +29,145 @@
 <div>
     <h4>Country</h4>
     <hr />
+
+    <div class="table-responsive">
+
+        @* Names *@
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Names</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Common</td>
+                    <td>@Html.DisplayFor(model => countries.First().name.common)</td>
+                </tr>
+                <tr>
+                    <td>Official</td>
+                    <td>@Html.DisplayFor(model => countries.First().name.official)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @*Native name*@
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Native Names</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var native in countries)
+                {
+                    <tr>
+                        <td>Native</td>
+                        <td>@Html.DisplayFor(model => native.name.nativeName)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @*Capital*@
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Capitals</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cap in captitals)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => cap)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <table class="table table-bordered border-primary">
+            
+            <tbody>
+                <tr>
+                    <td>Region</td>
+                    <td>@Html.DisplayFor(model => countries.First().region)</td>
+                </tr>
+                <tr>
+                    <td>Subregion</td>
+                    <td>@Html.DisplayFor(model => countries.First().subregion)</td>
+                </tr>
+                <tr>
+                    <td>Area</td>
+                    <td>@Html.DisplayFor(model => countries.First().area)</td>
+                </tr>
+                <tr>
+                    <td>Population</td>
+                    <td>@Html.DisplayFor(model => countries.First().population)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        @*Timezones*@
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Timezones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var times in timezones)
+                {
+                    <tr>
+                        <td colspan="2">@Html.DisplayFor(model => times)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @*FLAGS*@
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Flags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PNG Flag</td>
+                    <td>
+                        <a href="@Html.DisplayFor(model => countries.First().flags.png)">@Html.DisplayFor(model => countries.First().flags.png)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SVG Flag</td>
+                    <td>
+                        <a href="@Html.DisplayFor(model => countries.First().flags.svg)">@Html.DisplayFor(model => countries.First().flags.svg)</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.region)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.region)
-        </dd>
 
+
+
+        @foreach (var c in countries)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => c.region)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => c.region)
+            </dd>
+        }
+
+        @*
         <dt>
             @Html.DisplayNameFor(model => model.subregion)
         </dt>
@@ -40,7 +190,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.population)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
