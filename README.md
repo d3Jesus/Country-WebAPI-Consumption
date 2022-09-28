@@ -16,7 +16,7 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 - Exportar as informações dos países para os formatos:
 - [x] XLS
 - [x] CSV
-- [] XML
+- [x] XML
 
 ## Autor
 - [Yuran de Jesus](https://github.com/Yuran-de-Jesus)
