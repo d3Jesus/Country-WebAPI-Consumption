@@ -156,7 +156,7 @@ namespace WebAPI.Controllers
                             Type.Missing, Type.Missing);
 
             excapp.Quit();
-            
+
             return RedirectToAction(nameof(GetAllCountries));
         }
 
@@ -192,41 +192,22 @@ namespace WebAPI.Controllers
             return File(new System.Text.UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "CountryDetails.csv");
         }
 
-        #endregion
-
-        #region Retrieve Data
-        private async Task<List<Country>> RetrieveData(string value)
+        public ActionResult ExportToXML()
         {
-            //Hosted web API REST Service base url
-            string Baseurl = "https://restcountries.com/v3.1/";
-            List<Country> country = null;
-            using (var client = new HttpClient())
-            {
-                //Passing service base url
-                client.BaseAddress = new Uri(Baseurl);
-                client.DefaultRequestHeaders.Clear();
-                //Define request data format
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient
-                var Res = await client.GetAsync(value);
-                //Checking the response is successful or not which is sent using HttpClient
-                if (Res.IsSuccessStatusCode)
-                {
-                    //Storing the response details received from web api
-                    var response = Res.Content.ReadAsStringAsync().Result;
-                    //Deserializing the response received from web api and storing into the Country list
-                    country = JsonConvert.DeserializeObject<List<Country>>(response);
-                }
-            }
-            return country;
+            var list = TempData["CountriesList"] as List<Country>;
+            System.Xml.Serialization.XmlSerializer writer =
+            new System.Xml.Serialization.XmlSerializer(typeof(List<Country>));
+
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//CountryDetails.xml";
+            System.IO.FileStream file = System.IO.File.Create(path);
+
+            writer.Serialize(file, list);
+            file.Close();
+
+            TempData["success"] = "Document successfully exported as XML file to Documents folder.";
+
+            return RedirectToAction(nameof(GetAllCountries));
         }
         #endregion
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

@@ -15,7 +15,7 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 - [x] Obter e visualizar as informações de propriedades dos países (nome, capital, região, sub-região, população, área, fuso horário, nome nativo e o link para visualizar a bandeira)
 - Exportar as informações dos países para os formatos:
 - [x] XLS
-- [] CSV
+- [x] CSV
 - [] XML
 
 ## Autor
