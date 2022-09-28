@@ -156,32 +156,42 @@ namespace WebAPI.Controllers
                             Type.Missing, Type.Missing);
 
             excapp.Quit();
-            ////or open one - this is no pleasant, but yue're probably interested in the first parameter
-            //string workbookPath = "C:/Users/"+ Environment.UserName + "/Downloads/test.xlsx";
-            //workbook = excapp.Workbooks.Open(workbookPath,
-            //    0, false, 5, "", "", false, NsExcel.XlPlatform.xlWindows, "",
-            //    true, false, 0, true, false, false);
-
-            ////Not done yet. You have to work on a specific sheet - note the cast
-            ////You may not have any sheets at all. Then you have to add one with NsExcel.Worksheet.Add()
-            //var sheet = (NsExcel.Worksheet)workbook.Sheets[1]; //indexing starts from 1
-
-            ////do something usefull: you select now an individual cell
-            //var range = sheet.get_Range("A1", "A1");
-            //range.Value2 = "test"; //Value2 is not a typo
-
-            ////now the list
-            //string cellName;
-            //int counter = 1;
-            //foreach (var item in list)
-            //{
-            //    cellName = "A" + counter.ToString();
-            //    range = sheet.get_Range(cellName, cellName);
-            //    range.Value2 = item.ToString();
-            //    ++counter;
-            //}
+            
             return RedirectToAction(nameof(GetAllCountries));
         }
+
+        public FileResult ExportToCSV()
+        {
+            var lstData = TempData["CountriesList"] as List<Country>;
+            var sb = new System.Text.StringBuilder();
+            
+            sb.AppendLine("Official Name: " + lstData.First().name.official);
+            sb.AppendLine("Common Name: " + lstData.First().name.common);
+
+            sb.AppendLine("Capitals: ");
+            var capitals = lstData.First().capital;
+            for (int i = 0; i < capitals.Count; i++)
+            {
+                sb.AppendLine(capitals[i] + ",");
+            }
+
+            sb.AppendLine("Region: " + lstData.First().region);
+            sb.AppendLine("Subregion: " + lstData.First().subregion);
+            sb.AppendLine("Area: " + lstData.First().area.ToString());
+            sb.AppendLine("Population: " + lstData.First().population.ToString());
+
+            var timezones = lstData.First().timezones;
+            for (int i = 0; i < timezones.Count; i++)
+            {
+                sb.AppendLine(timezones[i] + ",");
+            }
+
+            sb.AppendLine("PNG Flag: " + lstData.First().flags.png);
+            sb.AppendLine("SVG Flag: " + lstData.First().flags.svg);
+
+            return File(new System.Text.UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "CountryDetails.csv");
+        }
+
         #endregion
 
         #region Retrieve Data
