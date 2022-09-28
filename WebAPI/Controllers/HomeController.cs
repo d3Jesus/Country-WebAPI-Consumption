@@ -157,6 +157,8 @@ namespace WebAPI.Controllers
 
             excapp.Quit();
 
+            TempData["success"] = "Document successfully exported as XLS.";
+
             return RedirectToAction(nameof(GetAllCountries));
         }
 
@@ -188,6 +190,8 @@ namespace WebAPI.Controllers
 
             sb.AppendLine("PNG Flag: " + lstData.First().flags.png);
             sb.AppendLine("SVG Flag: " + lstData.First().flags.svg);
+
+            TempData["success"] = "Document successfully exported as CSV file to Downloads folder.";
 
             return File(new System.Text.UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "CountryDetails.csv");
         }
