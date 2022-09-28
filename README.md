@@ -6,11 +6,16 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 ## Table of Contents
 
 - [Overview](#overview)
-- [Author](#author)
+- [Tarefas] (#tarefas)
+- [Autor](#autor)
 
 ## Overview
 
-## Author
+## Tarefas
+- [x] Obter e visualizar as informações de propriedades dos países (nome, capital, região, sub-região, população, área, fuso horário, nome nativo e o link para visualizar a bandeira)
+- [] Exportar as informações dos países para os formatos XLS, CSV e XML.
+
+## Autor
 - [Yuran de Jesus](https://github.com/Yuran-de-Jesus)
 =======
 # WebAPICountry
