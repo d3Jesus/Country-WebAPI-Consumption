@@ -1,6 +1,6 @@
 # WebApi
 ## Introduction
-Projecto criado como desafio para a vaga de emprego de desenvolvedor C# para a 2iBi. O objectivo era desenvolver um cliente REST, através da API [restcountries]((https://restcountries.com).
+Projecto criado como desafio para a vaga de emprego de desenvolvedor C# para a 2iBi. O objectivo era desenvolver um cliente REST, através da API [restcountries](https://restcountries.com).
 
 ## Table of Contents
 
