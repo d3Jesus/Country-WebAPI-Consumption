@@ -1,20 +1,20 @@
 # WebApi
 ## Introduction
-Project criado como desafio para uma vaga de emprego. O objectivo era desenvolver um sitema, através da API fornecida, consumir os seus dados.
+Projecto criado como desafio para a vaga de emprego de desenvolvedor C# para a 2iBi. O objectivo era desenvolver um cliente REST, através da API [restcountries]((https://restcountries.com).
 
 ## Table of Contents
 
-- [Overview](#overview)
-	- [Display All Countries](#display-all)
-	- [Display Country Details](#display-details)
+- [Visao Geral](#visao-geral)
+	- [Apresentar Todos Paises](#todos-paises)
+	- [Apresentar Detalhes do Pais](#detalhes-do-pais)
 - [Tarefas](#tarefas)
 - [Autor](#autor)
 
-## Overview
-### Display All
+## Visao Geral
+### Todos Paises
 ![GetAll](https://github.com/Yuran-de-Jesus/Country-WebAPI-Consumption/blob/master/WebAPI/Content/assets/GetAll.PNG)
 
-### Display Details
+### Detalhes do Pais
 ![Details](https://github.com/Yuran-de-Jesus/Country-WebAPI-Consumption/blob/master/WebAPI/Content/assets/Details.PNG)
 
 ## Tarefas
@@ -26,5 +26,5 @@ Project criado como desafio para uma vaga de emprego. O objectivo era desenvolve
 - [x] XML
 
 ## Autor
-- [Yuran de Jesus](https://github.com/Yuran-de-Jesus)
+- [Yuran de Jesus](https://github.com/d3jesus)
 
